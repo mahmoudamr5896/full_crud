@@ -3,19 +3,17 @@ import axios from 'axios';
 
 const CrudComponent = () => {
 
-
-
     const [items, setItems] = useState([]);
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
     const [selectValue, setSelectValue] = useState('default');
     const [editIndex, setEditIndex] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> fULL CRUD OPRATOTS USING API  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     useEffect(() => {
       fetchItems();
     }, []);
-  
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<oPRATION NUMBER 1 [GET]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const fetchItems = async () => {
       try {
         const response = await axios.get('https://retoolapi.dev/HwZNt6/data');
@@ -25,6 +23,7 @@ const CrudComponent = () => {
       }
     };
   
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<oPRATION NUMBER 1 [POST]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const addItem = async () => {
       try {
         const newItem = { field1: inputValue1, field2: inputValue2, select: selectValue };
@@ -37,7 +36,7 @@ const CrudComponent = () => {
         console.error('Error adding item:', error);
       }
     };
-  
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<oPRATION NUMBER 1 [REMOVE]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const removeItem = async (id) => {
       try {
         await axios.delete(`https://retoolapi.dev/HwZNt6/data/${id}`);
@@ -46,8 +45,9 @@ const CrudComponent = () => {
         console.error('Error removing item:', error);
       }
     };
-  
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<oPRATION NUMBER 1 [PUT]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const updateItem = async (id) => {
+
       try {
         const updatedItem = { field1: inputValue1, field2: inputValue2, select: selectValue };
         await axios
@@ -61,7 +61,9 @@ const CrudComponent = () => {
         console.error('Error updating item:', error);
       }
     };
-  
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  HANDEL SEARCH BY FILED ONE AND TOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     const handleSearch = (e) => {
       setSearchTerm(e.target.value);
     };
@@ -71,7 +73,7 @@ const CrudComponent = () => {
       (item.field2 && item.field2.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (item.select && item.select.toLowerCase().includes(searchTerm.toLowerCase()))
     );
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Handel Select option from api<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Handel Select option from api<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
   
