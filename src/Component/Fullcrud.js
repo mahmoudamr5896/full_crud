@@ -50,7 +50,8 @@ const CrudComponent = () => {
     const updateItem = async (id) => {
       try {
         const updatedItem = { field1: inputValue1, field2: inputValue2, select: selectValue };
-        await axios.put(`https://retoolapi.dev/HwZNt6/data/${id}`, updatedItem);
+        await axios
+        .patch(`https://retoolapi.dev/HwZNt6/data/${id}`, updatedItem);
         fetchItems();
         setInputValue1('');
         setInputValue2('');
@@ -131,10 +132,10 @@ const CrudComponent = () => {
                       <option value="default">Select</option>
                       <option value="">Select a product</option>
                       {categories.map((category, index) => (
-            <option key={index} value={category}>
-              {category}
-            </option>
-          ))}
+                          <option key={index} value={category}>
+                            {category}
+                          </option>
+                        ))}
                       <option value="option1">Option 1</option>
                       <option value="option2">Option 2</option>
                       <option value="option3">Option 3</option>
@@ -188,7 +189,7 @@ const CrudComponent = () => {
                           setInputValue1(item.field1);
                           setInputValue2(item.field2);
                           setSelectValue(item.select);
-                          setEditIndex(index);
+                          setEditIndex(item.id);
                         }}
                       >
                         Edit
