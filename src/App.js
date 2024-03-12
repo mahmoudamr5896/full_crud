@@ -5,7 +5,7 @@ import CrudComponent from '../src/Component/Fullcrud'
 function App() {
   return (
     <div className="App">
-      <CrudComponent></CrudComponent>
+      {/* <CrudComponent></CrudComponent> */}
     </div>
   );
 }
